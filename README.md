@@ -40,14 +40,8 @@ UML diagrams export in org-mode
 
 ```
 sudo apt-get -y install graphviz ditaa
+mkdir -p ~/Appz; curl -L http://sourceforge.net/projects/plantuml/files/plantuml.jar/download > ~/Appz/plantuml.jar
 ```
-
-Downlad:
-```
-http://sourceforge.net/projects/plantuml/files/plantuml.jar/download
-```
-
-put it in `~/Appz/plantuml.jar`
 
 learn about UML diagrams in plain text http://plantuml.sourceforge.net/index.html
 
@@ -55,6 +49,7 @@ learn about UML diagrams in plain text http://plantuml.sourceforge.net/index.htm
 Basics in this config
 ---------------------
 
+- `C-g` - abort (if you f*** up sth)
 - `F4` - runs directory browser `dired`
 - `C-right` - next-buffer
 - `C-left`  - previous-buffer
