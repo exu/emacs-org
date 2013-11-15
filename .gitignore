@@ -1,0 +1,4 @@
+vendor/
+*~
+elpa
+org-clock-save.el
