@@ -95,9 +95,24 @@ Basics in emacs
 - http://orgmode.org/worg/org-tutorials/org4beginners.html
 - http://cheat.errtheblog.com/s/orgmode
 
+### Moving
+
+- `C-f` - move forward
+- `C-b` - move backward
+
+- `C-n` - move next line
+- `C-b` - move previous line
+
+- `M-f` - move forward by word
+- `M-b` - move backward by word
+
+
+
+
 ### Selecting text
 
 - `C-SPACE` - start text selecting (config allows to select by SHIFT-ARROWS)
+- `C-M-SPACE` - mark expression (different behaviour in each mode)
 
 ### Cut - Copy - paste
 
@@ -143,4 +158,11 @@ C-SPACE
 Why emacs?
 ----------
 
-Because it rocks http://emacsrocks.com/
+- Because it rocks http://emacsrocks.com/
+
+- Because it have some plugins
+  - magit - http://magit.github.io/magit/magit.html
+  - yasnippet - http://www.youtube.com/watch?v=ZCGmZK4V7Sg ,
+    https://github.com/capitaomorte/yasnippet
+  - multiple cursors - https://github.com/magnars/multiple-cursors.el
+  - elpa repository with plugins
