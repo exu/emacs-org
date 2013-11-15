@@ -7,6 +7,12 @@ RAW config for org-export and some basic editing
 installation
 ------------
 
+0. TLDR version
+
+```
+curl -L https://raw.github.com/exu/emacs-org/master/INSTALL | sh
+```
+
 1. New emacs 
 
 ```
