@@ -102,6 +102,26 @@ Basics in emacs
 - `M-b` - move backward by word
 
 
+### digit arguments
+
+Screa `C-1 C-0 C-0 a` am
+
+digit argument is triggered from keys modifiers
+- `C-NUM`
+- `M-NUM`
+- `M-C-NUM`
+
+there is also MINUS modifier for example:
+
+```
+I'm writing some sentence. after
+                                ^
+                                cursor
+
+```
+and I want to have capitalized "after" word
+
+Press `M-- M-c`
 
 
 ### Selecting text
