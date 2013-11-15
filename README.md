@@ -59,17 +59,17 @@ Basics in emacs
 
 ### Ask for help
 
-`C-h t` - learn by doing tutorial (Basics of basics)
-`C-h m` - help about mode in which you are
-`C-h C-h` - help about help
-`C-h k` - I want to know what that fucking key do!
-`C-h f` - as above but about some functions
-`C-h r` - parts of emacs (why it's so cool look at emacsrocks too)
+- `C-h t` - learn by doing tutorial (Basics of basics)
+- `C-h m` - help about mode in which you are
+- `C-h C-h` - help about help
+- `C-h k` - I want to know what that fucking key do!
+- `C-h f` - as above but about some functions
+- `C-h r` - parts of emacs (why it's so cool look at emacsrocks too)
 
 
 ### Selecting text
 
-`C-SPACE` - start text selecting (config allows to select by SHIFT-ARROWS)
+- `C-SPACE` - start text selecting (config allows to select by SHIFT-ARROWS)
 
 ### Cut - Copy - paste
 
@@ -79,8 +79,8 @@ Basics in emacs
 
 ### Advanced Cut - Copy - paste example
 
-you can COPY COPY COPY COPY COPY
-and paste e.g. 3rd copied element (from "kill-ring" by:
+- you can COPY COPY COPY COPY COPY
+- and paste e.g. 3rd copied element (from "kill-ring" by:
 
 ```
 C-y M-y M-y
