@@ -7,13 +7,15 @@ RAW config for org-export and some basic editing
 installation
 ------------
 
-0. TLDR version
+TLDR version
+------------
 
 ```
 curl -L https://raw.github.com/exu/emacs-org/master/INSTALL | sh
 ```
 
-1. New emacs 
+New emacs installation - verbose 
+--------------------------------
 
 ```
 mv ~/.emacs.d ~/.emacs.d.backup
@@ -26,33 +28,8 @@ mkdir ~/.emacs.d/elpa
 emacs -q -l ~/.emacs.d/elpa-org.el
 ```
     
-2. New org mode
 
-```
-M-x package-install <RET>
-org <RET>
+Why emacs?
+----------
 
-M-x package-install <RET>
-org-plus-contrib <RET>
-``` 
-
-    
-2.FUCK. (optional)  ELPA bug can't export to markdown
-    
-run `emacs -q` from shell (emacs without any config files)
-
-goto "*scratch*" buffer and paste (C-y) from clipboard this:
-
-```
-(require 'package)<----- C-xC-e
-(add-to-list 'package-archives '("org" . "http://orgmode.org/elpa/") t)<----- C-xC-e
-```
-
-On each line end execute `C-x C-e` (`eval-line`) after that 
-
-after that `GOTO step 2`
-   
-
-
-999. Why emacs? Because it rocks http://emacsrocks.com/
-   
+Because it rocks http://emacsrocks.com/
