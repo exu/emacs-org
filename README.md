@@ -15,7 +15,8 @@ sudo apt-get update
 sudo apt-get -y install emacs24 emacs24-el emacs24-common-non-dfsg
 git clone git@github.com:exu/emacs-org.git ~/.emacs.d
 mkdir ~/.emacs.d/vendor
-emacs
+mkdir ~/.emacs.d/elpa
+emacs -q -l ~/.emacs.d/elpa-org.el
 ```
     
 2. New org mode
