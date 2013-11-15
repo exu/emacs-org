@@ -28,6 +28,29 @@ mkdir ~/.emacs.d/elpa
 emacs -q -l ~/.emacs.d/elpa-org.el
 ```
 
+### Optional dependencies
+
+PDF export in org-mode
+
+```
+sudo apt-get -y install texlive texlive-latex-extra
+```
+
+UML diagrams export in org-mode
+
+```
+sudo apt-get -y install graphviz ditaa
+```
+
+Downlad:
+```
+http://sourceforge.net/projects/plantuml/files/plantuml.jar/download
+```
+
+put it in `~/Appz/plantuml.jar`
+
+learn about UML diagrams in plain text http://plantuml.sourceforge.net/index.html
+
 
 Basics in this config
 ---------------------
