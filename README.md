@@ -9,6 +9,7 @@ installation
 
 1. New emacs 
 
+
     sudo add-apt-repository -y ppa:cassou/emacs
     sudo apt-get update
     sudo apt-get -y install emacs24 emacs24-el emacs24-common-non-dfsg
@@ -18,8 +19,10 @@ installation
     
 2. New org mode
 
+
     M-x package-install <RET>
     org <RET>
+
 
     M-x package-install <RET>
     org-plus-contrib <RET>
