@@ -67,6 +67,11 @@ Basics in emacs
 - `C-h r` - parts of emacs (why it's so cool look at emacsrocks too)
 
 
+### Links
+
+- http://orgmode.org/worg/org-tutorials/org4beginners.html
+- http://cheat.errtheblog.com/s/orgmode
+
 ### Selecting text
 
 - `C-SPACE` - start text selecting (config allows to select by SHIFT-ARROWS)
