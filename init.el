@@ -36,7 +36,7 @@
   '(backup-directory-alist '((".*" . "~/.emacs.d/var/backups/"))))
 
 
-;; UI 
+;; UI
 (set-default-font "-unknown-DejaVu Sans Mono-normal-normal-normal-*-15-*-*-*-m-0-iso10646-1")
 (set-frame-font "-unknown-DejaVu Sans Mono-normal-normal-normal-*-15-*-*-*-m-0-iso10646-1")
 (setq fringe-mode (cons 1 0))
@@ -93,11 +93,13 @@
 (setq scroll-margin 0)
 (setq scroll-conservatively 0)
 (setq scroll-preserve-screen-position 1)
-(setq default-directory "~/www")
+(setq default-directory "~/")
 (setq make-backup-files nil)
 (setq auto-save-default nil)
 
 (setq dired-listing-switches "-al --group-directories-first")
+
+(global-auto-revert-mode t)
 
  ;; IDO mode
 (setq ido-enable-prefix nil)
@@ -132,6 +134,8 @@
   (blink-cursor-mode -1))
 
 
+(global-set-key [C-right] 'next-buffer)
+(global-set-key [C-left] 'previous-buffer)
 
 ;;; KEYS
 (global-set-key (kbd "C-x C-b") 'ibuffer)
@@ -146,6 +150,7 @@
 
 
 (define-prefix-command 'exu-f1-dirs-map)
+
 (global-set-key (kbd "<f2>") 'exu-f1-dirs-map) ;; dirs
 (global-set-key (kbd "<f2>a") (lambda nil (interactive) (dired "/etc/apache2")))
 (global-set-key (kbd "<f2>p") (lambda nil (interactive) (dired "/etc/postgresql/9.1/main")))
@@ -153,6 +158,11 @@
 (global-set-key (kbd "<f2>w") (lambda nil (interactive) (dired "/srv/www/")))
 (global-set-key (kbd "<f2>c") (lambda nil (interactive) (dired "/srv/www/crm")))
 (global-set-key (kbd "<f2>q") (lambda nil (interactive) (dired "/srv/www/qarson")))
+
+(global-set-key (kbd "<f4>") ( lambda () (interactive) ( dired ".")))
+(global-set-key (kbd "<f5>") 'kmacro-start-macro)
+(global-set-key (kbd "<f6>") 'kmacro-end-macro)
+(global-set-key (kbd "<f7>") 'kmacro-end-and-call-macro)
 
 ;; org-mode configuration
 (setq org-directory "~/org/")
@@ -179,7 +189,7 @@
 
 (setq org-export-backends '(freemind deck md html odt latex ascii))
 (require 'org)
-(require 'ox-md)                        
+(require 'ox-md)
 (require 'ox-html)
 
 ;; active Babel languages
@@ -197,6 +207,3 @@
    (sh . t)
    (plantuml . t)
    ))
-
-
-
