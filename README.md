@@ -16,6 +16,7 @@ curl -L https://raw.github.com/exu/emacs-org/master/INSTALL | sh
 1. New emacs 
 
 ```
+mv ~/.emacs.d ~/.emacs.d.backup
 sudo add-apt-repository -y ppa:cassou/emacs
 sudo apt-get update
 sudo apt-get -y install emacs24 emacs24-el emacs24-common-non-dfsg
