@@ -1,0 +1,1145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>Org-mode - a.k.a. your ultimate organizer (basics of basics)</title>
+<!-- 2016-02-05 pią 06:35 -->
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="generator" content="Org-mode" />
+<meta  name="author" content="Jacek Wysocki &lt;jacek.wysocki@gmail.com&gt;" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { color: green; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  pre.src-sh:before    { content: 'sh'; }
+  pre.src-bash:before  { content: 'sh'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-R:before     { content: 'R'; }
+  pre.src-perl:before  { content: 'Perl'; }
+  pre.src-java:before  { content: 'Java'; }
+  pre.src-sql:before   { content: 'SQL'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.right  { text-align: center;  }
+  th.left   { text-align: center;   }
+  th.center { text-align: center; }
+  td.right  { text-align: right;  }
+  td.left   { text-align: left;   }
+  td.center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara:nth-child(2) { display: inline; }
+  .footpara { display: block; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  /*]]>*/-->
+</style>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2013 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">Org-mode - a.k.a. your ultimate organizer (basics of basics)</h1>
+
+
+<div id="outline-container-sec-1" class="outline-2">
+<h2 id="sec-1"><span class="section-number-2">1</span> Intro</h2>
+<div class="outline-text-2" id="text-1">
+</div><div id="outline-container-sec-1-1" class="outline-3">
+<h3 id="sec-1-1"><span class="section-number-3">1.1</span> <span class="done DONE">DONE</span> Adapt text size for better readibility :)</h3>
+<div class="outline-text-3" id="text-1-1">
+<p>
+All this things and many many more are in official org-mode
+manual (<a href="http://orgmode.org/manual/index.html#Top">http://orgmode.org/manual/index.html#Top</a>)
+</p>
+
+<p>
+(text-scale-increase -1)
+(text-scale-increase 1)
+</p>
+</div>
+
+<div id="outline-container-sec-1-1-1" class="outline-4">
+<h4 id="sec-1-1-1"><span class="section-number-4">1.1.1</span> Tip</h4>
+<div class="outline-text-4" id="text-1-1-1">
+<p>
+In emacs <code>C-x C-e</code> executes elisp code
+e.g.
+</p>
+
+<p>
+(message "aaaaaaaaaaaaaa!!!!!!!!")
+(find-file (concat "<i>etc/nginx</i>" "nginx.conf"))
+</p>
+</div>
+</div>
+</div>
+
+
+
+<div id="outline-container-sec-1-2" class="outline-3">
+<h3 id="sec-1-2"><span class="section-number-3">1.2</span> WTF is emacs?</h3>
+<div class="outline-text-3" id="text-1-2">
+<p>
+GNU Emacs is an extensible, customizable text editor—and <b>more</b>.
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-1-3" class="outline-3">
+<h3 id="sec-1-3"><span class="section-number-3">1.3</span> WTF is orgmode?</h3>
+<div class="outline-text-3" id="text-1-3">
+<p>
+Org-mode is:
+</p>
+
+<p>
+Outline-based notes management and organizer, alias
+"Carsten's outline-mode for keeping track of <b>everything</b>."
+</p>
+
+<p>
+<b>everything</b> is keyword here!
+</p>
+
+<p>
+For most devz it could be compared to markdown on steroids (a LOT of steroids)
+</p>
+
+<p>
+Why?
+</p>
+
+<p>
+Because it's most powerfull tag-less (plain text based) format
+</p>
+
+<p>
+Org's syntax is similar to markdown or textile or wiki.
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-2" class="outline-2">
+<h2 id="sec-2"><span class="section-number-2">2</span> Customization</h2>
+<div class="outline-text-2" id="text-2">
+<ul class="org-ul">
+<li><code>M-x customize-group</code> - (customize-group "org")
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-sec-3" class="outline-2">
+<h2 id="sec-3"><span class="section-number-2">3</span> How to get help</h2>
+<div class="outline-text-2" id="text-3">
+<p>
+There are several ways for getting help in Emacs:
+</p>
+
+<ol class="org-ol">
+<li>RTFM:
+a) web <a href="http://orgmode.org/manual/index.html#Top">http://orgmode.org/manual/index.html#Top</a>
+b) or in emacs: <code>C-h r</code> (and then search <code>C-s</code> <code>Org Mode</code>)
+</li>
+
+<li>For key shortcuts and description of any emacs mode: <code>C-h m</code> (help mode, there is also help key, help function and help help <code>C-h C-h</code>)
+</li>
+
+<li>This little <code>Org</code> mode menu on bottom
+</li>
+
+<li><code>C-h m</code> Help about mode in which you are (org-mode in this filem)
+</li>
+</ol>
+</div>
+</div>
+
+<div id="outline-container-sec-4" class="outline-2">
+<h2 id="sec-4"><span class="section-number-2">4</span> Document structure</h2>
+<div class="outline-text-2" id="text-4">
+<p>
+ORG is OUTLINE based - its structure is like a tree
+</p>
+</div>
+
+
+
+<div id="outline-container-sec-4-1" class="outline-3">
+<h3 id="sec-4-1"><span class="section-number-3">4.1</span> tree levels are defined by "<code>*</code>" character</h3>
+<div class="outline-text-3" id="text-4-1">
+<div class="org-src-container">
+
+<pre class="src src-org">* Its first level header
+  Some content
+
+** Its subheader
+   And content
+
+*** Sub sub header
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-4-2" class="outline-3">
+<h3 id="sec-4-2"><span class="section-number-3">4.2</span> You can "walk" in different directions</h3>
+<div class="outline-text-3" id="text-4-2">
+<ul class="org-ul">
+<li><code>C-c C-n</code> - next tree element
+</li>
+<li><code>C-c C-u</code> - goto parent element
+</li>
+</ul>
+
+<p>
+Some basics are in this screencast: <a href="http://vimeo.com/15269391">http://vimeo.com/15269391</a>
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-4-3" class="outline-3">
+<h3 id="sec-4-3"><span class="section-number-3">4.3</span> nested</h3>
+<div class="outline-text-3" id="text-4-3">
+</div><div id="outline-container-sec-4-3-1" class="outline-4">
+<h4 id="sec-4-3-1"><span class="section-number-4">4.3.1</span> nested</h4>
+<div class="outline-text-4" id="text-4-3-1">
+</div><ol class="org-ol"><li><a id="sec-4-3-1-1" name="sec-4-3-1-1"></a>nested<br  /><ol class="org-ol"><li><a id="sec-4-3-1-1-1" name="sec-4-3-1-1-1"></a>nested<br  /></li></ol>
+</li></ol>
+</div>
+
+<div id="outline-container-sec-4-3-2" class="outline-4">
+<h4 id="sec-4-3-2"><span class="section-number-4">4.3.2</span> nested</h4>
+<div class="outline-text-4" id="text-4-3-2">
+</div><ol class="org-ol"><li><a id="sec-4-3-2-1" name="sec-4-3-2-1"></a>nested<br  /></li>
+<li><a id="sec-4-3-2-2" name="sec-4-3-2-2"></a>nested<br  /><ol class="org-ol"><li><a id="sec-4-3-2-2-0-1" name="sec-4-3-2-2-0-1"></a>nested<br  /><ol class="org-ol"><li><a id="sec-4-3-2-2-0-1-1" name="sec-4-3-2-2-0-1-1"></a>nested<br  /></li></ol>
+</li></ol>
+</li>
+<li><a id="sec-4-3-2-3" name="sec-4-3-2-3"></a>nested<br  /><ol class="org-ol"><li><a id="sec-4-3-2-3-1" name="sec-4-3-2-3-1"></a>nested<br  /><ol class="org-ol"><li><a id="sec-4-3-2-3-1-1" name="sec-4-3-2-3-1-1"></a>nested<br  /><ol class="org-ol"><li><a id="sec-4-3-2-3-1-1-1" name="sec-4-3-2-3-1-1-1"></a>nested<br  /></li></ol>
+</li></ol>
+</li></ol>
+</li></ol>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-5" class="outline-2">
+<h2 id="sec-5"><span class="section-number-2">5</span> Basic Text formatting</h2>
+<div class="outline-text-2" id="text-5">
+<div class="org-src-container">
+
+<pre class="src src-org">This is *bold* /italics/ _underline_
+</pre>
+</div>
+
+<p>
+Gives us output:
+This is <b>bold</b> <i>italics</i> <span class="underline">underline</span>
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-6" class="outline-2">
+<h2 id="sec-6"><span class="section-number-2">6</span> Tags</h2>
+<div class="outline-text-2" id="text-6">
+<p>
+You can use tags on each entry, press <code>C-c C-q</code> to add/change existing tags-tree
+</p>
+</div>
+
+<div id="outline-container-sec-6-1" class="outline-3">
+<h3 id="sec-6-1"><span class="section-number-3">6.1</span> Entry 1&#xa0;&#xa0;&#xa0;<span class="tag"><span class="db">db</span></span></h3>
+</div>
+
+<div id="outline-container-sec-6-2" class="outline-3">
+<h3 id="sec-6-2"><span class="section-number-3">6.2</span> Entry 2&#xa0;&#xa0;&#xa0;<span class="tag"><span class="web">web</span></span></h3>
+</div>
+
+<div id="outline-container-sec-6-3" class="outline-3">
+<h3 id="sec-6-3"><span class="section-number-3">6.3</span> Entry 3&#xa0;&#xa0;&#xa0;<span class="tag"><span class="queues">queues</span>&#xa0;<span class="db">db</span></span></h3>
+</div>
+</div>
+
+
+<div id="outline-container-sec-7" class="outline-2">
+<h2 id="sec-7"><span class="section-number-2">7</span> PUT some CODE inside</h2>
+<div class="outline-text-2" id="text-7">
+<p>
+we can add source code block in <code>#begin_src</code> tag
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-php">echo $_POST['something'];
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-8" class="outline-2">
+<h2 id="sec-8"><span class="section-number-2">8</span> RUN!! some CODE inside your documentation</h2>
+<div class="outline-text-2" id="text-8">
+<div class="org-src-container">
+
+<pre class="src src-sh">ls -lah
+</pre>
+</div>
+</div>
+
+<div id="outline-container-sec-8-1" class="outline-3">
+<h3 id="sec-8-1"><span class="section-number-3">8.1</span> PRO TIP</h3>
+<div class="outline-text-3" id="text-8-1">
+<p>
+it could be configured to run on export, e.g. to HTML or PDF :)
+Do you feel the <b>POWER</b>?
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-9" class="outline-2">
+<h2 id="sec-9"><span class="section-number-2">9</span> TABLES handling in org</h2>
+<div class="outline-text-2" id="text-9">
+</div><div id="outline-container-sec-9-1" class="outline-3">
+<h3 id="sec-9-1"><span class="section-number-3">9.1</span> Basics</h3>
+<div class="outline-text-3" id="text-9-1">
+<p>
+start writing <code>|--</code> and You'll get new table
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-9-2" class="outline-3">
+<h3 id="sec-9-2"><span class="section-number-3">9.2</span> Simple sum :)</h3>
+<div class="outline-text-3" id="text-9-2">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="left" />
+
+<col  class="right" />
+
+<col  class="left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="left">some</th>
+<th scope="col" class="right">thing</th>
+<th scope="col" class="left">2 thing</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="left">title</td>
+<td class="right">10</td>
+<td class="left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="left">&#xa0;</td>
+<td class="right">20</td>
+<td class="left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="left">&#xa0;</td>
+<td class="right">30</td>
+<td class="left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="left">&#xa0;</td>
+<td class="right">41</td>
+<td class="left">&#xa0;</td>
+</tr>
+</tbody>
+</table>
+
+
+<p>
+For some additional feature <b>look at bottom menu</b>: Org =&gt; Tbl
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-9-3" class="outline-3">
+<h3 id="sec-9-3"><span class="section-number-3">9.3</span> You can make tables from simple strings</h3>
+<div class="outline-text-3" id="text-9-3">
+<div class="org-src-container">
+
+<pre class="src src-sh">this will be nice table
+1    2    3   3    33
+and it should fit in
+columns trolololo
+</pre>
+</div>
+
+
+<p>
+Press <code>C-c |</code> on selection and You'll receive
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-text">| this    | will      | be     | nice | table |
+| 1       | 2         | 3      | 3    | 33    |
+| and     | it        | should | fit  | in    |
+| columns | trolololo |        |      |       |
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-10" class="outline-2">
+<h2 id="sec-10"><span class="section-number-2">10</span> Plot</h2>
+<div class="outline-text-2" id="text-10">
+<p>
+<a href="http://orgmode.org/manual/Org_002dPlot.html#Org_002dPlot">http://orgmode.org/manual/Org_002dPlot.html#Org_002dPlot</a>
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-11" class="outline-2">
+<h2 id="sec-11"><span class="section-number-2">11</span> UML diagrams drawing</h2>
+<div class="outline-text-2" id="text-11">
+</div><div id="outline-container-sec-11-1" class="outline-3">
+<h3 id="sec-11-1"><span class="section-number-3">11.1</span> setup</h3>
+<div class="outline-text-3" id="text-11-1">
+<p>
+first you'll need to set jars location for our drawing programs
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-elisp">(setq workdir (file-name-directory (or load-file-name buffer-file-name)))
+(setq org-plantuml-jar-path (expand-file-name "plantuml.jar" workdir))
+(setq org-ditaa-jar-path (expand-file-name "ditaa.jar" workdir))
+</pre>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-sec-11-2" class="outline-3">
+<h3 id="sec-11-2"><span class="section-number-3">11.2</span> draw</h3>
+<div class="outline-text-3" id="text-11-2">
+
+<div class="figure">
+<p><img src="uml.png" alt="uml.png" />
+</p>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-12" class="outline-2">
+<h2 id="sec-12"><span class="section-number-2">12</span> Graphs drawing</h2>
+<div class="outline-text-2" id="text-12">
+<p>
+Draw them with text (use dot language for it)
+details about DOT <a href="http://www.graphviz.org/pdf/dotguide.pdf">http://www.graphviz.org/pdf/dotguide.pdf</a>
+</p>
+
+
+
+
+
+<div class="figure">
+<p><img src="skills.png" alt="skills.png" />
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-13" class="outline-2">
+<h2 id="sec-13"><span class="section-number-2">13</span> exporting to other formats</h2>
+<div class="outline-text-2" id="text-13">
+<p>
+All files default generates file with exported extension in almost all cases
+if you replace last letter with <code>o</code> it will be replaced.
+</p>
+</div>
+
+<div id="outline-container-sec-13-1" class="outline-3">
+<h3 id="sec-13-1"><span class="section-number-3">13.1</span> markdown</h3>
+<div class="outline-text-3" id="text-13-1">
+<p>
+<code>C-c C-e m m</code>
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-13-2" class="outline-3">
+<h3 id="sec-13-2"><span class="section-number-3">13.2</span> html</h3>
+<div class="outline-text-3" id="text-13-2">
+<p>
+<code>C-c C-e h h</code>
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-13-3" class="outline-3">
+<h3 id="sec-13-3"><span class="section-number-3">13.3</span> pdf</h3>
+<div class="outline-text-3" id="text-13-3">
+<p>
+<code>C-c C-e l p</code>
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-13-4" class="outline-3">
+<h3 id="sec-13-4"><span class="section-number-3">13.4</span> odt</h3>
+<div class="outline-text-3" id="text-13-4">
+<p>
+<code>C-c C-e o o</code>
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-13-5" class="outline-3">
+<h3 id="sec-13-5"><span class="section-number-3">13.5</span> mindmaps</h3>
+<div class="outline-text-3" id="text-13-5">
+<p>
+<code>C-c C-e f f</code>
+</p>
+
+<p>
+it looks like recent version of org breaks this functionality (8.2.3c)
+but it worked in pre 8.2 versions :) We need to wait until someone repair this
+</p>
+</div>
+</div>
+</div>
+
+
+
+<div id="outline-container-sec-14" class="outline-2">
+<h2 id="sec-14"><span class="section-number-2">14</span> Agenda</h2>
+<div class="outline-text-2" id="text-14">
+<p>
+You can add files to org-agenda its a list of TODO entries
+which can be filtered by tags, statuses etc, we can make some
+actions on it.
+</p>
+
+<p>
+You can add files to agenda in your config file
+</p>
+<div class="org-src-container">
+
+<pre class="src src-lisp">(setq org-agenda-files
+      (quote (
+              "~/org/wiki/presentation.org"
+              "~/org/wiki/temporary.org"
+              )))
+</pre>
+</div>
+
+
+<p>
+or mange them by pressing
+</p>
+<ul class="org-ul">
+<li><code>C-c [</code> - (org-agenda-file-to-front)
+</li>
+<li><code>C-c ]</code> - (org-remove-file)
+</li>
+</ul>
+
+
+<p>
+You can view <code>M-x org-agenda</code> - org agenda todo
+</p>
+
+<p>
+We define agenda and TODOs key shortcuts
+</p>
+<div class="org-src-container">
+
+<pre class="src src-lisp">(global-set-key (kbd "C-c a a") 'org-agenda)
+(global-set-key (kbd "C-c a t") (lambda () (interactive) (org-todo-list 1) ))
+</pre>
+</div>
+
+<ul class="org-ul">
+<li><code>q</code> key quit agenda or todo view (like any other mode where speed keys are used)
+</li>
+</ul>
+
+<p>
+You can define custom agenda commands (it's from some tutorial)
+</p>
+<div class="org-src-container">
+
+<pre class="src src-lisp">(setq org-agenda-custom-commands
+      '(("x" agenda)
+        ("y" agenda*)
+        ("u" tags "+boss-urgent")
+        ("v" tags-todo "+boss-urgent")
+        ("U" tags-tree "+boss-urgent")
+        ("f" occur-tree "\\&lt;FIXME\\&gt;")
+        ("h" . "HOME+Name tags searches") ; description for "h" prefix
+        ("hl" tags "+home+Lisa")
+        ("hp" tags "+home+Peter")
+        ("hk" tags "+home+Kim")))
+</pre>
+</div>
+
+
+<p>
+more in: <a href="http://orgmode.org/manual/Built_002din-agenda-views.html#Built_002din-agenda-views">http://orgmode.org/manual/Built_002din-agenda-views.html#Built_002din-agenda-views</a>
+</p>
+</div>
+</div>
+
+
+
+<div id="outline-container-sec-15" class="outline-2">
+<h2 id="sec-15"><span class="section-number-2">15</span> Capturing notes</h2>
+<div class="outline-text-2" id="text-15">
+</div><div id="outline-container-sec-15-1" class="outline-3">
+<h3 id="sec-15-1"><span class="section-number-3">15.1</span> Org capture templates</h3>
+<div class="outline-text-3" id="text-15-1">
+<ul class="org-ul">
+<li><code>C-c c</code> - defined in config file - runs org-capture function
+</li>
+</ul>
+
+
+<div class="org-src-container">
+
+<pre class="src src-elisp">(define-key global-map "\C-cc" 'org-capture)
+
+(setq org-capture-templates
+      '(
+        ("p" "Presentation" entry (file+olp "~/org/wiki/temporary.org" "Root level heading")
+         "* TODO %?\n  %i\n  %a")
+        ))
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+
+
+
+
+<div id="outline-container-sec-16" class="outline-2">
+<h2 id="sec-16"><span class="section-number-2">16</span> Hyperlinks</h2>
+<div class="outline-text-2" id="text-16">
+<ul class="org-ul">
+<li><code>C-c C-l</code> - creates hyperlink with description and link to whatever you want
+(even some kind of position in file e.g. some PHP file - look for <code>org-capture</code>)
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-sec-17" class="outline-2">
+<h2 id="sec-17"><span class="section-number-2">17</span> TODOs and checkboxes</h2>
+<div class="outline-text-2" id="text-17">
+<p>
+you can add checkboxes and TODOs
+</p>
+</div>
+
+<div id="outline-container-sec-17-1" class="outline-3">
+<h3 id="sec-17-1"><span class="section-number-3">17.1</span> Checkboxes</h3>
+<div class="outline-text-3" id="text-17-1">
+<p>
+You can use <code>C-c C-c</code> to toggle (<code>M-S-RET</code> to create new below)
+</p>
+
+<ul class="org-ul">
+<li><code>[&#xa0;]</code> Some
+</li>
+<li><code>[X]</code> checked checkbox
+</li>
+</ul>
+
+<p>
+<b>Remember that</b>: Parent item could count his children!
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-17-2" class="outline-3">
+<h3 id="sec-17-2"><span class="section-number-3">17.2</span> You can use todo list (in header lines)</h3>
+<div class="outline-text-3" id="text-17-2">
+</div><div id="outline-container-sec-17-2-1" class="outline-4">
+<h4 id="sec-17-2-1"><span class="section-number-4">17.2.1</span> Simple TODO list</h4>
+<div class="outline-text-4" id="text-17-2-1">
+</div><ol class="org-ol"><li><a id="sec-17-2-1-1" name="sec-17-2-1-1"></a><span class="todo TODO">TODO</span> One<br  /></li>
+<li><a id="sec-17-2-1-2" name="sec-17-2-1-2"></a><span class="todo TODO">TODO</span> Two&#xa0;&#xa0;&#xa0;<span class="tag"><span class="sometag">sometag</span></span><br  /></li>
+<li><a id="sec-17-2-1-3" name="sec-17-2-1-3"></a><span class="todo TODO">TODO</span> Three<br  /></li>
+<li><a id="sec-17-2-1-4" name="sec-17-2-1-4"></a><span class="todo TODO">TODO</span> Four<br  /></li></ol>
+</div>
+
+
+<div id="outline-container-sec-17-2-2" class="outline-4">
+<h4 id="sec-17-2-2"><span class="section-number-4">17.2.2</span> Simple checkbox list</h4>
+<div class="outline-text-4" id="text-17-2-2">
+<ul class="org-ul">
+<li><code>[&#xa0;]</code> one
+</li>
+<li><code>[&#xa0;]</code> two
+</li>
+<li><code>[X]</code> three
+</li>
+</ul>
+
+<p>
+add progress :)
+</p>
+</div>
+</div>
+
+
+<div id="outline-container-sec-17-2-3" class="outline-4">
+<h4 id="sec-17-2-3"><span class="section-number-4">17.2.3</span> <span class="todo TODO">TODO</span> Blocking</h4>
+<div class="outline-text-4" id="text-17-2-3">
+
+<div class="org-src-container">
+
+<pre class="src src-org">(setq org-enforce-todo-dependencies 1)
+</pre>
+</div>
+</div>
+
+
+<ol class="org-ol"><li><a id="sec-17-2-3-1" name="sec-17-2-3-1"></a><span class="todo TODO">TODO</span> One<br  /></li>
+
+<li><a id="sec-17-2-3-2" name="sec-17-2-3-2"></a><span class="todo TODO">TODO</span> Two<br  /></li>
+
+<li><a id="sec-17-2-3-3" name="sec-17-2-3-3"></a><span class="todo TODO">TODO</span> Three<br  /></li></ol>
+</div>
+</div>
+
+
+<div id="outline-container-sec-17-3" class="outline-3">
+<h3 id="sec-17-3"><span class="section-number-3">17.3</span> States</h3>
+<div class="outline-text-3" id="text-17-3">
+<div class="org-src-container">
+
+<pre class="src src-elisp">(setq org-todo-keywords
+      '((sequence "TODO" "STARTED" "TESTING" "|" "COMPLETED")
+        (sequence "FUTURE" "|" "SUSPENDED")))
+
+(setq org-todo-keyword-faces
+      '(
+        ("FUTURE" . (:foreground "lightblue" :weight bold))
+        ("STARTED"  . (:foreground "orange" :weight bold))
+        ("SUSPENDED" . (:foreground "light gray" :weight bold))
+        ("TESTING" . (:foreground "light salmon" :weight bold))
+        ))
+</pre>
+</div>
+
+<p>
+or in header:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-org">#+TODO: TODO FEEDBACK VERIFY | DONE CANCELED
+</pre>
+</div>
+
+
+<p>
+goto <a href="./init.el">Your emacs init.el file</a>
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-18" class="outline-2">
+<h2 id="sec-18"><span class="section-number-2">18</span> Date and time</h2>
+<div class="outline-text-2" id="text-18">
+<ul class="org-ul">
+<li>Press <code>C-.</code> to insert date
+</li>
+<li>Press <code>C-u C-.</code> to insert date
+</li>
+</ul>
+</div>
+</div>
+
+
+<div id="outline-container-sec-19" class="outline-2">
+<h2 id="sec-19"><span class="section-number-2">19</span> Time tracking</h2>
+<div class="outline-text-2" id="text-19">
+</div><div id="outline-container-sec-19-1" class="outline-3">
+<h3 id="sec-19-1"><span class="section-number-3">19.1</span> You can track time of todo lists:</h3>
+<div class="outline-text-3" id="text-19-1">
+<ul class="org-ul">
+<li>You can <code>org-clock-in</code> TODO entry by <code>C-c C-x C-i</code>
+</li>
+<li>And after an hour <code>C-c C-x C-o</code> <code>org-clock-out</code>
+</li>
+<li>You can adjust dates by <code>S-up</code> <code>S-down</code>
+</li>
+</ul>
+</div>
+
+<div id="outline-container-sec-19-1-1" class="outline-4">
+<h4 id="sec-19-1-1"><span class="section-number-4">19.1.1</span> <span class="todo TODO">TODO</span> I want to know how long it takes</h4>
+</div>
+</div>
+
+
+
+
+<div id="outline-container-sec-19-2" class="outline-3">
+<h3 id="sec-19-2"><span class="section-number-3">19.2</span> You can create reports about your clocked entries</h3>
+<div class="outline-text-3" id="text-19-2">
+<ul class="org-ul">
+<li>With <code>C-c C-x C-r</code> you can insert nice clock report under cursor
+</li>
+</ul>
+</div>
+</div>
+</div>
+
+
+
+
+<div id="outline-container-sec-20" class="outline-2">
+<h2 id="sec-20"><span class="section-number-2">20</span> Special File view</h2>
+<div class="outline-text-2" id="text-20">
+<ul class="org-ul">
+<li><code>C-c /</code> Run special view dialog
+</li>
+</ul>
+</div>
+</div>
+
+
+<div id="outline-container-sec-21" class="outline-2">
+<h2 id="sec-21"><span class="section-number-2">21</span> Archive not needed entries</h2>
+<div class="outline-text-2" id="text-21">
+<p>
+If you want to make some long term notes probably some of entries in your
+org file will be not needed enymore. You can <code>C-c C-x C-a</code> to archive tree
+under cursor
+</p>
+
+<p>
+and <a href="file:///home/exu/org/work/todo.org_archive">ARCHIVED FILE</a>
+</p>
+</div>
+</div>
+
+
+<div id="outline-container-sec-22" class="outline-2">
+<h2 id="sec-22"><span class="section-number-2">22</span> Maybe not org-mode related but sometimes needed</h2>
+<div class="outline-text-2" id="text-22">
+</div><div id="outline-container-sec-22-1" class="outline-3">
+<h3 id="sec-22-1"><span class="section-number-3">22.1</span> Shell integration - replace command results unix <code>sort|uniq</code> example</h3>
+<div class="outline-text-3" id="text-22-1">
+<p>
+bLu BlU
+Some super long line
+lo lo lo tro lo lo lo
+lo lo lo tro lo lo lo
+Tro bLu BlU
+lo lo lo tro lo lo lo
+bLu BlU
+bLu BlU
+lo lo lo tro lo lo lo
+bLu BlU
+bLu BlU
+bLu BlU
+bLu BlU
+lo lo lo tro lo lo lo
+lo lo lo tro lo lo lo
+lo lo lo tro lo lo lo
+lo lo lo tro lo lo lo
+lo lo lo tro lo lo lo
+</p>
+
+<p>
+SELECT, <code>C-u M-| sort|uniq &lt;RET&gt;</code>
+</p>
+</div>
+</div>
+
+
+<div id="outline-container-sec-22-2" class="outline-3">
+<h3 id="sec-22-2"><span class="section-number-3">22.2</span> Shell integration insert content of command</h3>
+<div class="outline-text-3" id="text-22-2">
+<p>
+<code>C-u M-! ls -la &lt;RET&gt;</code>
+</p>
+</div>
+</div>
+
+
+
+<div id="outline-container-sec-22-3" class="outline-3">
+<h3 id="sec-22-3"><span class="section-number-3">22.3</span> Windows splits</h3>
+<div class="outline-text-3" id="text-22-3">
+<ul class="org-ul">
+<li><code>C-x 1</code> - only current window
+</li>
+<li><code>C-x 0</code> - kill current window
+</li>
+<li><code>C-x 2</code> - split horizontically
+</li>
+<li><code>C-x 3</code> - split vertically
+</li>
+<li><code>C-x o</code> - next window
+
+<p>
+:aaa:
+</p>
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-sec-22-4" class="outline-3">
+<h3 id="sec-22-4"><span class="section-number-3">22.4</span> Dired basics</h3>
+<div class="outline-text-3" id="text-22-4">
+<p>
+run: <code>M-x dired</code> (in config <code>F4</code>)
+</p>
+
+<p>
+on file or directory
+</p>
+
+<ul class="org-ul">
+<li><code>C</code> - copy
+</li>
+<li><code>R</code> - move
+</li>
+<li><code>M</code> - chmod
+</li>
+<li><code>C-x C-q</code> live edit structure
+</li>
+</ul>
+</div>
+</div>
+
+
+<div id="outline-container-sec-22-5" class="outline-3">
+<h3 id="sec-22-5"><span class="section-number-3">22.5</span> macros</h3>
+<div class="outline-text-3" id="text-22-5">
+<ul class="org-ul">
+<li>Start recording (<code>C-x (</code>)
+</li>
+<li>Do sth
+</li>
+<li>Stop recording (<code>C-x )</code>)
+</li>
+<li>Replay (<code>C-x e</code>)
+</li>
+</ul>
+
+<p>
+DEMO:
+Task: Add " before and after each second word
+</p>
+
+<p>
+one two three
+four five six
+seven eight nine
+bl bla bla l l l
+blu blu blu
+trolo lo lo
+</p>
+
+<p>
+You can merge this technique with digit argument,
+save them and map to key shortcut and many many more
+</p>
+</div>
+</div>
+
+
+<div id="outline-container-sec-22-6" class="outline-3">
+<h3 id="sec-22-6"><span class="section-number-3">22.6</span> And it's only about <span class="underline">5‰</span> of features</h3>
+</div>
+
+<div id="outline-container-sec-22-7" class="outline-3">
+<h3 id="sec-22-7"><span class="section-number-3">22.7</span> PS you can <sup><a id="fnr.2" name="fnr.2" class="footref" href="#fn.2">2</a></sup>run lisp by <code>C-x C-e</code> after closing parenthesis e.g.</h3>
+<div class="outline-text-3" id="text-22-7">
+<p>
+(tetris)
+</p>
+
+<p>
+or
+</p>
+
+<p>
+(zone)
+</p>
+</div>
+</div>
+
+
+<div id="outline-container-sec-22-8" class="outline-3">
+<h3 id="sec-22-8"><span class="section-number-3">22.8</span> PS2 look and explain some <a href="file:///home/exu/.emacs.d/init.el">Config file</a> entries</h3>
+</div>
+</div>
+
+
+<div id="outline-container-sec-23" class="outline-2">
+<h2 id="sec-23"><span class="section-number-2">23</span> Some little cons</h2>
+<div class="outline-text-2" id="text-23">
+<ul class="org-ul">
+<li>no good mobile integration, there is mobile-org for iOS and Android but
+the they lacks of functionalities
+</li>
+
+<li>hmm big dependencies (tex) for pdf exports
+</li>
+</ul>
+</div>
+</div>
+
+
+
+<div id="outline-container-sec-24" class="outline-2">
+<h2 id="sec-24"><span class="section-number-2">24</span> Thank You!</h2>
+<div class="outline-text-2" id="text-24">
+<div class="org-src-container">
+
+<pre class="src src-sh">#   ________
+#  &lt; Danke! &gt;
+#   --------
+#          \   ^__^
+#           \  (oo)\_______
+#              (__)\       )\/\
+#                  ||----w |
+#                  ||     ||
+</pre>
+</div>
+</div>
+</div>
+<div id="footnotes">
+<h2 class="footnotes">Footnotes: </h2>
+<div id="text-footnotes">
+
+<div class="footdef"><sup><a id="fn.1" name="fn.1" class="footnum" href="#fnr.1">1</a></sup> <p class="footpara">
+The link is: <a href="http://orgmode.org">http://orgmode.org</a>
+</p></div>
+
+<div class="footdef"><sup><a id="fn.2" name="fn.2" class="footnum" href="#fnr.2">2</a></sup> <p>DEFINITION NOT FOUND.</p></div>
+
+
+</div>
+</div></div>
+<div id="postamble" class="status">
+<p class="author">Author: Jacek Wysocki &lt;jacek.wysocki@gmail.com&gt;</p>
+<p class="date">Created: 2016-02-05 pią 06:35</p>
+<p class="creator"><a href="http://www.gnu.org/software/emacs/">Emacs</a> 24.5.1 (<a href="http://orgmode.org">Org</a> mode 8.2.10)</p>
+<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>

@@ -1,0 +1,57 @@
+#    -*- mode: org -*-
+
+
+Archived entries from file /home/exu/src/github.com/exu/emacs-org/org-mode.org
+
+
+* export images to gitlab workaround
+:PROPERTIES:
+:ARCHIVE_TIME: 2016-02-04 czw 06:59
+:ARCHIVE_FILE: ~/src/github.com/exu/emacs-org/org-mode.org
+:ARCHIVE_OLPATH: UML diagrams drawing
+:ARCHIVE_CATEGORY: org-mode
+:END:
+
+What about some problems with exporting generated diagrams
+to external services like github or gitlab:
+
+I've made some simple function which replace gitlab image URL
+export to markdown before (=C-c C-e m m=) and then =C-c m=
+
+#+BEGIN_SRC elisp
+(defun org-export-md-update-images-path ()
+  (interactive)
+  (save-buffer)
+  (setq img-path (car (cdr (assoc 'md-img (org-export--list-bound-variables)))))
+  (message (concat "Changing remote image path: " img-path))
+  (find-file  (replace-regexp-in-string "\\.org" ".md" (buffer-file-name)))
+  (beginning-of-buffer)
+  (setq img (org-export--list-bound-variables))
+  (while (search-forward "](" nil t) (replace-match (concat "](" img-path) nil t))
+  (save-buffer)
+  (previous-buffer)
+  )
+
+(define-key org-mode-map (kbd "C-c m") 'org-export-md-update-images-path)
+#+END_SRC
+
+you need to add =#+BIND: md-img "/sites/websites/raw/next/doc/behat/"= to the file header
+
+
+
+
+* Configuration - How to start
+:PROPERTIES:
+:ARCHIVE_TIME: 2016-02-04 czw 07:19
+:ARCHIVE_FILE: ~/src/github.com/exu/emacs-org/org-mode.org
+:ARCHIVE_CATEGORY: org-mode
+:END:
+
+* TODO choose one customization-group which is fine for presentation purposes
+:PROPERTIES:
+:ARCHIVE_TIME: 2016-02-04 czw 07:20
+:ARCHIVE_FILE: ~/src/github.com/exu/emacs-org/org-mode.org
+:ARCHIVE_OLPATH: Customization
+:ARCHIVE_CATEGORY: org-mode
+:ARCHIVE_TODO: TODO
+:END:

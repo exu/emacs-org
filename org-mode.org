@@ -1,0 +1,683 @@
+#+TITLE: Org-mode - a.k.a. your ultimate organizer (basics of basics)
+#+AUTHOR: Jacek Wysocki <jacek.wysocki@gmail.com>
+#+OPTIONS: toc:nil
+#+STARTUP: nofold
+
+
+
+* Intro
+
+** Adapt text size for better readibility :)
+
+All this things and many many more are in official org-mode
+manual (http://orgmode.org/manual/index.html#Top)
+
+(text-scale-increase -1)
+(text-scale-increase 1)
+
+***  Tip
+
+In emacs =C-x C-e= executes elisp code
+e.g.
+
+(message "aaaaaaaaaaaaaa!!!!!!!!")
+(find-file (concat "/etc/nginx/" "nginx.conf"))
+
+
+
+** WTF is emacs?
+
+GNU Emacs is an extensible, customizable text editor—and *more*.
+
+** WTF is orgmode?
+
+Org-mode is:
+
+Outline-based notes management and organizer, alias
+"Carsten's outline-mode for keeping track of *everything*."
+
+*everything* is keyword here!
+
+For most devz it could be compared to markdown on steroids (a LOT of steroids)
+
+Why?
+
+Because it's most powerfull tag-less (plain text based) format
+
+Org's syntax is similar to markdown or textile or wiki.
+
+* Customization
+
+- =M-x customize-group= - (customize-group "org")
+
+* How to get help
+
+There are several ways for getting help in Emacs:
+
+1. RTFM:
+   a) web http://orgmode.org/manual/index.html#Top
+   b) or in emacs: =C-h r= (and then search =C-s= =Org Mode=)
+
+2. For key shortcuts and description of any emacs mode: =C-h m= (help mode, there is also help key, help function and help help =C-h C-h=)
+
+3. This little =Org= mode menu on bottom
+
+4. =C-h m= Help about mode in which you are (org-mode in this filem)
+
+* Document structure
+
+ORG is OUTLINE based - its structure is like a tree
+
+
+
+** tree levels are defined by "=*=" character
+
+#+BEGIN_SRC org
+,* Its first level header
+  Some content
+
+,** Its subheader
+   And content
+
+,*** Sub sub header
+#+END_SRC
+
+** You can "walk" in different directions
+
+- =C-c C-n= - next tree element
+- =C-c C-u= - goto parent element
+
+Some basics are in this screencast: http://vimeo.com/15269391
+
+** nested
+*** nested
+**** nested
+***** nested
+
+*** nested
+**** nested
+**** nested
+****** nested
+******* nested
+**** nested
+***** nested
+****** nested
+******* nested
+
+* Basic Text formatting
+
+#+BEGIN_SRC org
+This is *bold* /italics/ _underline_
+#+END_SRC
+
+Gives us output:
+This is *bold* /italics/ _underline_
+
+* Tags
+
+You can use tags on each entry, press =C-c C-q= to add/change existing tags-tree
+more on http://orgmode.org/manual/Tags.html#Tags
+
+** Entry 1                                                              :db:
+
+** Entry 2                                                             :web:
+
+** Entry 3                                                       :queues:db:
+
+
+
+
+* PUT some CODE inside
+
+we can add source code block in =#begin_src= tag
+
+#+BEGIN_SRC php
+echo $_POST['something'];
+#+END_SRC
+
+* RUN!! some CODE inside your documentation
+
+#+BEGIN_SRC sh
+ls -lah
+#+END_SRC
+
+#+RESULTS:
+| razem      | 236K |     |     |      |     |    |       |                            |
+| drwxr-xr-x |    2 | exu | exu | 4.0K | Sep | 17 | 17:25 | .                          |
+| drwxr-xr-x |   13 | exu | exu | 4.0K | Sep | 17 | 17:24 | ..                         |
+| -rw-r--r-- |    1 | exu | exu | 8.0K | Jan |  9 |  2014 | behat.org                  |
+| -rw-r--r-- |    1 | exu | exu | 8.6K | Apr | 23 |  2014 | blabl.png                  |
+| -rw-r--r-- |    1 | exu | exu | 2.2K | Jan | 27 |  2014 | deploy.org                 |
+| -rw-r--r-- |    1 | exu | exu | 151K | Sep | 17 | 08:41 | org-mode.html              |
+| -rw-r--r-- |    1 | exu | exu | 11K  | Nov | 21 | 17:04 | org-mode.org               |
+| -rw-r--r-- |    1 | exu | exu | 4.9K | Apr | 23 |  2014 | somesimpleclassdiagram.png |
+
+** PRO TIP
+
+it could be configured to run on export, e.g. to HTML or PDF :)
+Do you feel the *POWER*?
+
+* TABLES handling in org
+
+** Basics
+
+start writing =|--= and You'll get new table
+
+** Simple sum :)
+
+| some  | thing | 2 thing |
+|-------+-------+---------|
+| title |    10 |         |
+|       |    20 |         |
+|       |    30 |         |
+|       |    41 |         |
+#+TBLFM: $3=$2*$2
+
+
+For some additional feature *look at bottom menu*: Org => Tbl
+
+** You can make tables from simple strings
+
+#+BEGIN_SRC sh
+this will be nice table
+1    2    3   3    33
+and it should fit in
+columns trolololo
+#+END_SRC
+
+
+Press =C-c |= on selection and You'll receive
+
+#+BEGIN_SRC text
+| this    | will      | be     | nice | table |
+| 1       | 2         | 3      | 3    | 33    |
+| and     | it        | should | fit  | in    |
+| columns | trolololo |        |      |       |
+#+END_SRC
+
+* Plot
+
+http://orgmode.org/manual/Org_002dPlot.html#Org_002dPlot
+
+* UML diagrams drawing
+
+** setup
+
+first you'll need to set jars location for our drawing programs
+
+#+begin_src elisp :results replace output :exports both
+(setq workdir (file-name-directory (or load-file-name buffer-file-name)))
+(setq org-plantuml-jar-path (expand-file-name "plantuml.jar" workdir))
+(setq org-ditaa-jar-path (expand-file-name "ditaa.jar" workdir))
+#+end_src
+
+
+** draw
+
+#+begin_src plantuml :file uml.png
+title Example Sequence Diagram
+activate Client
+Client -> Server: Session Initiation
+note right: Client requests new session
+activate Server
+Client <-- Server: Authorization Request
+note left: Server requires authentication
+Client -> Server: Authorization Response
+note right: Client provides authentication details
+Server --> Client: Session Token
+note left: Session established
+deactivate Server
+Client -> Client: Saves token
+deactivate Client
+#+end_src
+
+
+#+RESULTS:
+[[file:uml.png]]
+
+* Graphs drawing
+
+Draw them with text (use dot language for it)
+details about DOT http://www.graphviz.org/pdf/dotguide.pdf
+
+
+
+
+#+begin_src dot :results replace output :exports results :file skills.png
+digraph G {
+
+	subgraph cluster_0 {
+	  style=dashed;
+	  color=lightgrey;
+	  label = "assigments";
+      users_assigments -> assigments [label="join"];
+	}
+
+  activities_units -> activities
+  activities -> users_assigments
+
+  assigments -> tasks_results [label="attempts_ids"];
+  tasks_results -> tasks [label="attempts_ids"];
+
+	subgraph cluster_1 {
+	    style=dashed;
+		color=lightgrey;
+		label = "skills";
+      tasks -> skills;
+	}
+
+
+  skills -> agregated_results
+  tasks_results -> agregated_results
+}
+#+end_src
+
+
+#+RESULTS:
+[[file:skills.png]]
+
+* exporting to other formats
+
+All files default generates file with exported extension in almost all cases
+if you replace last letter with =o= it will be replaced.
+
+** markdown
+
+=C-c C-e m m=
+
+** html
+
+=C-c C-e h h=
+
+** pdf
+
+=C-c C-e l p=
+
+** odt
+
+=C-c C-e o o=
+
+** mindmaps
+
+=C-c C-e f f=
+
+it looks like recent version of org breaks this functionality (8.2.3c)
+but it worked in pre 8.2 versions :) We need to wait until someone repair this
+
+
+
+* Agenda
+
+You can add files to org-agenda its a list of TODO entries
+which can be filtered by tags, statuses etc, we can make some
+actions on it.
+
+You can add files to agenda in your config file
+#+BEGIN_SRC lisp
+(setq org-agenda-files
+      (quote (
+              "~/org/wiki/presentation.org"
+              "~/org/wiki/temporary.org"
+              )))
+#+END_SRC
+
+
+or mange them by pressing
+- =C-c [= - (org-agenda-file-to-front)
+- =C-c ]= - (org-remove-file)
+
+
+You can view =M-x org-agenda= - org agenda todo
+
+We define agenda and TODOs key shortcuts
+#+BEGIN_SRC lisp
+(global-set-key (kbd "C-c a a") 'org-agenda)
+(global-set-key (kbd "C-c a t") (lambda () (interactive) (org-todo-list 1) ))
+#+END_SRC
+
+- =q= key quit agenda or todo view (like any other mode where speed keys are used)
+
+You can define custom agenda commands (it's from some tutorial)
+#+BEGIN_SRC lisp
+(setq org-agenda-custom-commands
+      '(("x" agenda)
+        ("y" agenda*)
+        ("u" tags "+boss-urgent")
+        ("v" tags-todo "+boss-urgent")
+        ("U" tags-tree "+boss-urgent")
+        ("f" occur-tree "\\<FIXME\\>")
+        ("h" . "HOME+Name tags searches") ; description for "h" prefix
+        ("hl" tags "+home+Lisa")
+        ("hp" tags "+home+Peter")
+        ("hk" tags "+home+Kim")))
+#+END_SRC
+
+
+more in: http://orgmode.org/manual/Built_002din-agenda-views.html#Built_002din-agenda-views
+
+
+
+* Capturing notes
+
+** Org capture templates
+
+- =C-c c= - defined in config file - runs org-capture function
+
+
+#+BEGIN_SRC elisp
+(define-key global-map "\C-cc" 'org-capture)
+
+(setq org-capture-templates
+      '(
+        ("p" "Presentation" entry (file+olp "~/org/wiki/temporary.org" "Root level heading")
+         "* TODO %?\n  %i\n  %a")
+        ))
+#+END_SRC
+
+
+
+
+
+* Hyperlinks
+
+- =C-c C-l= - creates hyperlink with description and link to whatever you want
+  (even some kind of position in file e.g. some PHP file - look for =org-capture=)
+
+* Footnotes
+
+The Org homepage[fn:1] now looks a lot better than it used to.
+
+[fn:1] The link is: http://orgmode.org
+
+
+* TODOs and checkboxes
+
+you can add checkboxes and TODOs
+
+** Checkboxes
+
+You can use =C-c C-c= to toggle (=M-S-RET= to create new below)
+
+- [ ] Some
+- [X] checked checkbox
+
+*Remember that*: Parent item could count his children!
+
+
+** You can use todo list (in header lines)
+
+
+*** Simple TODO list
+**** TODO One
+**** TODO Two                                                    :sometag:
+**** TODO Three
+**** TODO Four
+
+
+*** Simple checkbox list
+
+- [ ] one
+- [ ] two
+- [X] three
+
+add progress :)
+
+
+*** TODO Blocking
+:PROPERTIES:
+:ORDERED:  t
+:END:
+
+#+begin_src org
+(setq org-enforce-todo-dependencies 1)
+#+end_src
+
+
+**** TODO One
+
+**** TODO Two
+
+**** TODO Three
+
+
+** States
+
+#+begin_src elisp :results replace output :exports both
+(setq org-todo-keywords
+      '((sequence "TODO" "STARTED" "TESTING" "|" "COMPLETED")
+        (sequence "FUTURE" "|" "SUSPENDED")))
+
+(setq org-todo-keyword-faces
+      '(
+        ("FUTURE" . (:foreground "lightblue" :weight bold))
+        ("STARTED"  . (:foreground "orange" :weight bold))
+        ("SUSPENDED" . (:foreground "light gray" :weight bold))
+        ("TESTING" . (:foreground "light salmon" :weight bold))
+        ))
+#+end_src
+
+or in header:
+
+#+begin_src org :results replace output :exports both
+#+TODO: TODO FEEDBACK VERIFY | DONE CANCELED
+#+end_src
+
+
+goto [[./init.el][Your emacs init.el file]]
+
+
+** Tracking changes
+
+add header and reload file with  =C-x C-v=
+
+#+begin_src org
+#+TODO: TODO(t) WAIT(w@/!) | DONE(d!) CANCELED(c@)
+#+end_src
+
+see details if interested on:
+http://orgmode.org/manual/Tracking-TODO-state-changes.html#Tracking-TODO-state-changes
+
+
+* Properties
+
+Search them with =C-c / p=
+
+** TODO With property
+:PROPERTIES:
+:title: MEL
+:no: 2
+:END:
+
+** TODO Second
+:PROPERTIES:
+:title: MEL
+:no: 1
+:END:
+
+* Date and time
+
+** Date and time types
+
+http://orgmode.org/manual/Timestamps.html#Timestamps
+
+** To insert date or time
+
+- Press =C-.= to insert date
+- Press =C-u C-.= to insert datetime
+
+more on: http://orgmode.org/manual/Creating-timestamps.html#Creating-timestamps
+
+
+* Deadlines and Schedules
+
+** Deadlines
+
+To insert deadline entry on item press =C-c C-d=
+
+** Schedules
+
+To insert deadline entry on item press =C-c C-s=
+
+
+
+
+
+* Time tracking
+
+** You can track time of todo lists:
+
+- You can =org-clock-in= TODO entry by =C-c C-x C-i=
+- And after an hour =C-c C-x C-o= =org-clock-out=
+- You can adjust dates by =S-up= =S-down=
+- You can cancel by =C-c C-x C-q=
+more on: http://orgmode.org/manual/Clocking-work-time.html#Clocking-work-time
+
+*** TODO I want to know how long it takes
+
+
+** You can create reports about your clocked entries
+
+- With =C-c C-x C-d= You'll receive summary on bottom bar
+- With =C-c C-x C-r= You can insert nice clock report under cursor
+
+
+** Press =C-S-Up= or =C-S-Down= on end of time range (when two are connected
+
+*** Clock1
+:LOGBOOK:
+CLOCK: [2016-02-05 pią 02:00]--[2016-02-05 pią 07:00] =>  5:00
+:END:
+
+
+*** Clock2
+:LOGBOOK:
+CLOCK: [2016-02-05 pią 07:00]--[2016-02-05 pią 14:10] =>  7:10
+:END:
+
+
+
+* Special File view
+
+- =C-c /= Run special view dialog
+
+
+* Archive not needed entries
+
+If you want to make some long term notes probably some of entries in your
+org file will be not needed enymore. You can =C-c C-x C-a= to archive tree
+under cursor
+
+and [[~/org/work/todo.org_archive][ARCHIVED FILE]]
+
+
+* Maybe not org-mode related but sometimes needed
+
+
+** Shell integration - replace command results unix =sort|uniq= example
+
+bLu BlU
+Some super long line
+lo lo lo tro lo lo lo
+lo lo lo tro lo lo lo
+Tro bLu BlU
+lo lo lo tro lo lo lo
+bLu BlU
+bLu BlU
+lo lo lo tro lo lo lo
+bLu BlU
+bLu BlU
+bLu BlU
+bLu BlU
+lo lo lo tro lo lo lo
+lo lo lo tro lo lo lo
+lo lo lo tro lo lo lo
+lo lo lo tro lo lo lo
+lo lo lo tro lo lo lo
+
+SELECT, =C-u M-| sort|uniq <RET>=
+
+
+** Shell integration insert content of command
+
+=C-u M-! ls -la <RET>=
+
+
+
+** Windows splits
+
+- =C-x 1= - only current window
+- =C-x 0= - kill current window
+- =C-x 2= - split horizontically
+- =C-x 3= - split vertically
+- =C-x o= - next window
+
+ :aaa:
+
+** Dired basics
+
+run: =M-x dired= (in config =F4=)
+
+on file or directory
+
+- =C= - copy
+- =R= - move
+- =M= - chmod
+- =C-x C-q= live edit structure
+
+
+** macros
+
+- Start recording (=C-x (=)
+- Do sth
+- Stop recording (=C-x )=)
+- Replay (=C-x e=)
+
+DEMO:
+Task: Add " before and after each second word
+
+one two three
+four five six
+seven eight nine
+bl bla bla l l l
+blu blu blu
+trolo lo lo
+
+You can merge this technique with digit argument,
+save them and map to key shortcut and many many more
+
+
+** And it's only about _5‰_ of features
+
+** PS you can [fn:2]run lisp by =C-x C-e= after closing parenthesis e.g.
+
+(tetris)
+
+or
+
+(zone)
+
+
+** PS2 look and explain some [[~/.emacs.d/init.el][Config file]] entries
+
+
+* Some little cons
+
+- no good mobile integration, there is mobile-org for iOS and Android but
+  the they lacks of functionalities
+
+- hmm big dependencies (tex) for pdf exports
+
+
+
+* [#A] Thank You!
+
+#+BEGIN_SRC sh
+#   ________
+#  < Danke! >
+#   --------
+#          \   ^__^
+#           \  (oo)\_______
+#              (__)\       )\/\
+#                  ||----w |
+#                  ||     ||
+#+END_SRC

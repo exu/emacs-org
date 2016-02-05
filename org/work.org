@@ -1,0 +1,6 @@
+* TODO Stand 
+* TODO Introduce new world order to nmel
+** TODO PoC of new storage solution
+** TODO Find solution for migrations 					 :db:
+** TODO Win table football
+* TODO Goto boring training
