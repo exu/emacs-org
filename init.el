@@ -59,6 +59,13 @@
 (setq set-mark-command-repeat-pop 1) ; jump back to marker by C-u C-SPC C-SPC
 (setq visible-bell t)
 
+(defun open-file-in-browser ()
+  (interactive)
+  (browse-url (concat "file://" (buffer-file-name)))
+  )
+
+
+
 ;; org-mode configuration
 ;; (setq org-directory org-dir)
 (define-key global-map "\C-cc" 'org-capture)
