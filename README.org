@@ -2,6 +2,7 @@
 #+AUTHOR: Jacek Wysocki <jacek.wysocki@gmail.com>
 #+OPTIONS: toc:nil
 #+STARTUP: nofold
+#+TODO: TODO(t) WAIT(w@/!) | DONE(d!) CANCELED(c@)
 
 
 
@@ -67,7 +68,6 @@ There are several ways for getting help in Emacs:
 * Document structure
 
 ORG is OUTLINE based - its structure is like a tree
-
 
 
 ** tree levels are defined by "=*=" character
@@ -359,7 +359,7 @@ more in: http://orgmode.org/manual/Built_002din-agenda-views.html#Built_002din-a
 
 * Capturing notes
 
-** Org capture templates
+** Org capture templates config
 
 - =C-c c= - defined in config file - runs org-capture function
 
@@ -368,20 +368,39 @@ more in: http://orgmode.org/manual/Built_002din-agenda-views.html#Built_002din-a
 (define-key global-map "\C-cc" 'org-capture)
 
 (setq org-capture-templates
-      '(
-        ("p" "Presentation" entry (file+olp "~/org/wiki/temporary.org" "Root level heading")
-         "* TODO %?\n  %i\n  %a")
-        ))
+ '(("t" "Todo" entry (file+headline "~/org/gtd.org" "Tasks")
+        "* TODO %?\n  %i\n  %a")
+   ("j" "Journal" entry (file+datetree "~/org/journal.org")
+        "* %?\nEntered on %U\n  %i\n  %a")))
+
 #+END_SRC
 
 
+** Next you can start adding notes
 
+- =C-c= - start capture
+- =C-c C-c= - capture completed
+- =C-c C-w= - refiling - move to different place
+
+* Refiling
+
+You can move whole trees between headers. Use =C-c C-w= to do it
+
+more on: http://orgmode.org/manual/Refile-and-copy.html#Refile-and-copy
+
+Example:
+
+** Level 1A
+
+** Level 1B
 
 
 * Hyperlinks
 
 - =C-c C-l= - creates hyperlink with description and link to whatever you want
   (even some kind of position in file e.g. some PHP file - look for =org-capture=)
+
+[[http://www.wp.pl][ajskdhksajhdjkahsjkdkjas GOOGLE !!!!!]]
 
 * Footnotes
 
@@ -672,5 +691,13 @@ or
 * [#A] Thank You!
 
 #+BEGIN_SRC sh
-Danke!
+ _______
+< Danke! >
+ -------
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+
 #+END_SRC

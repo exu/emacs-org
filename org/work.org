@@ -1,6 +1,7 @@
-* TODO Stand 
+* TODO Stand
 * TODO Introduce new world order to nmel
-** TODO PoC of new storage solution
+** DONE PoC of new storage solution
+CLOSED: [2016-02-05 pią 15:06]
 ** TODO Find solution for migrations 					 :db:
 ** TODO Win table football
 * TODO Goto boring training
