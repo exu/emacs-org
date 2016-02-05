@@ -64,8 +64,6 @@
   (browse-url (concat "file://" (buffer-file-name)))
   )
 
-
-
 ;; org-mode configuration
 ;; (setq org-directory org-dir)
 (define-key global-map "\C-cc" 'org-capture)
